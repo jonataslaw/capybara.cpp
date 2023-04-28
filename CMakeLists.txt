@@ -252,17 +252,18 @@ if (NOT MSVC)
     endif()
 endif()
 
-if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "arm" OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
-    message(STATUS "ARM detected")
-    if (MSVC)
-        # TODO: arm msvc?
-    else()
-        if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
-            add_compile_options(-mcpu=native)
-        endif()
-        # TODO: armv6,7,8 version specific flags
-    endif()
-elseif (${CMAKE_SYSTEM_PROCESSOR} MATCHES "^(x86_64|i686|AMD64)$")
+# if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "arm" OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
+#     message(STATUS "ARM detected")
+#     if (MSVC)
+#         # TODO: arm msvc?
+#     else()
+#         if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
+#             add_compile_options(-mcpu=native)
+#         endif()
+#         # TODO: armv6,7,8 version specific flags
+#     endif()
+# else
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "^(x86_64|i686|AMD64)$")
     message(STATUS "x86 detected")
     if (MSVC)
         if (LLAMA_AVX512)
